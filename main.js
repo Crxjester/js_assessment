@@ -35,12 +35,14 @@ class Field {
             for (let x = 0; x < width; x++) {
 
                 //Generate random holes
-                const prob = Math.random();
+                const prob = Math.floor(Math.random());
                 this.field[y][x] = fieldCharacter;
             }
         }
     
         //Set "hat" location
+
+        this.field[Math.floor(Math.random()*10)][Math.floor(Math.random()*10)] = hat;
     
         //set character position as [0][0]
         this.field[0][0] = pathCharacter;
@@ -62,8 +64,28 @@ class Field {
     }
 
     askQuestion(){
-        const answer = prompt('Which way?').toUpperCase();
-        //Implement your codes
+        const answer = prompt('Which way? U = Up, D = Down, L = Left, R = Right ').toUpperCase();
+        switch(answer) {
+            case "U":
+                this.y -=1;
+                console.log("Move Up");
+                
+                break;
+            case "D":
+                this.y +=1;
+                console.log("Move Down");
+                break;
+            case "L":
+                this.y +=1;
+                console.log("Move Left");
+                break;
+            case "R":
+                this.y +=1;
+                console.log("Move Right");
+                break;
+            default:
+                error = "Invalid. Enter U, D, L or R"
+        }
     }
     
 } //End of class
